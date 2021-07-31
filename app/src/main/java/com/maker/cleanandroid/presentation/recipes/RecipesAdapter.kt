@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.maker.cleanandroid.R
 import com.maker.cleanandroid.databinding.ItemRecipeBinding
 import com.maker.cleanandroid.domain.model.Recipe
 import com.maker.cleanandroid.presentation.protocols.ImageLoader

@@ -18,7 +18,8 @@ object PresentationModule {
         return module {
             viewModel {
                 RecipesViewModel(
-                    getRecipesUseCase = get()
+                    getRecipesUseCase = get(),
+                    requestRecipesUseCase = get()
                 )
             }
         }

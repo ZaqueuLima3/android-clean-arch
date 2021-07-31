@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.maker.cleanandroid.domain.model.FoodRecipe
+import com.maker.cleanandroid.domain.model.Recipe
 import com.maker.cleanandroid.domain.usecases.GetRecipesUseCase
+import com.maker.cleanandroid.domain.usecases.RequestRecipesUseCase
 import com.maker.cleanandroid.shared.Constants.QUERY_ADD_RECIPE_INFORMATION
 import com.maker.cleanandroid.shared.Constants.QUERY_API_KEY
 import com.maker.cleanandroid.shared.Constants.QUERY_DIET
@@ -19,15 +20,20 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class RecipesViewModel(
-    private val getRecipesUseCase: GetRecipesUseCase
+    private val getRecipesUseCase: GetRecipesUseCase,
+    private val requestRecipesUseCase: RequestRecipesUseCase
 ) : ViewModel() {
     private val _viewState = MutableLiveData<ViewState>()
     val viewState: LiveData<ViewState>
         get() = _viewState
 
-    fun getRecipes() {
+    init {
+        subscribeToRecipesUpdates()
+    }
+
+    private fun subscribeToRecipesUpdates() {
         viewModelScope.launch {
-            getRecipesUseCase(mountQuery())
+            getRecipesUseCase()
                 .onStart {
                     _viewState.postValue(ViewState.Loading)
                 }
@@ -36,8 +42,17 @@ class RecipesViewModel(
                     _viewState.postValue(ViewState.Error(error))
                 }
                 .collect { recipes ->
+                    if (recipes.isEmpty()) {
+                        requestRecipes()
+                    }
                     _viewState.postValue(ViewState.Success(recipes))
                 }
+        }
+    }
+
+    fun requestRecipes() {
+        viewModelScope.launch {
+            requestRecipesUseCase(mountQuery())
         }
     }
 
@@ -54,7 +69,7 @@ class RecipesViewModel(
 
     sealed class ViewState {
         object Loading : ViewState()
-        data class Success(val recipes: FoodRecipe) : ViewState()
+        data class Success(val recipes: List<Recipe>) : ViewState()
         data class Error(val error: Throwable) : ViewState()
     }
 }

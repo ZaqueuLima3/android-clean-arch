@@ -17,7 +17,7 @@ import org.koin.dsl.module
 import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkModule {
-    val modules = networkModules() + repositoryModules()
+    val modules = networkModules()
 
     private fun networkModules(): Module {
         return module {
@@ -32,17 +32,6 @@ object NetworkModule {
             single {
                 FoodRecipeMapper(
                     resultResponseMapper = get()
-                )
-            }
-        }
-    }
-
-    private fun repositoryModules(): Module {
-        return module {
-            single<RecipesRepository> {
-                SpoonacularRecipesRepository(
-                    services = get(),
-                    foodRecipeMapper = get()
                 )
             }
         }

@@ -1,35 +1,24 @@
 package com.maker.cleanandroid.presentation.recipes
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.maker.cleanandroid.databinding.FragmentRecipesBinding
+import com.maker.cleanandroid.presentation.BindingFragment
 
 class RecipesFragment(
     private val viewModel: RecipesViewModel,
     private val recipesAdapter: RecipesAdapter
-) : Fragment() {
-    private val binding by lazy { FragmentRecipesBinding.inflate(layoutInflater) }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return binding.root
-    }
+) : BindingFragment<FragmentRecipesBinding>(FragmentRecipesBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
-        requestInitialRecipes()
     }
 
     private fun setupUI() {
         setupRecyclerView()
+        setupListeners()
         observeViewStateUpdates()
     }
 
@@ -38,6 +27,12 @@ class RecipesFragment(
             adapter = recipesAdapter
             layoutManager = GridLayoutManager(requireContext(), ITEMS_PER_ROW)
             setHasFixedSize(true)
+        }
+    }
+
+    private fun setupListeners() {
+        binding.swipeContainer.setOnRefreshListener {
+            requestRecipes()
         }
     }
 
@@ -54,14 +49,14 @@ class RecipesFragment(
             is RecipesViewModel.ViewState.Error -> {
             }
             is RecipesViewModel.ViewState.Success -> {
-                recipesAdapter.submitList(viewState.recipes.recipes)
-                recipesAdapter.notifyDataSetChanged()
+                recipesAdapter.submitList(viewState.recipes)
             }
         }
     }
 
-    private fun requestInitialRecipes() {
-        viewModel.getRecipes()
+    private fun requestRecipes() {
+        viewModel.requestRecipes()
+        binding.swipeContainer.isRefreshing = false
     }
 
     companion object {
