@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 abstract class RecipesDao {
     @Transaction
-    @Query("SELECT * FROM recipes")
+    @Query("SELECT * FROM recipes ORDER BY recipeId DESC")
     abstract fun getAllRecipes(): Flow<List<CachedFoodRecipesAggregate>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

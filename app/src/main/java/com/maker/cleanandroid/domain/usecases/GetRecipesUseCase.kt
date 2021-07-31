@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 class GetRecipesUseCase(
     private val recipesRepository: RecipesRepository
-) : UseCase.NoParam<List<Recipe>>() {
-    override suspend fun execute(): Flow<List<Recipe>> {
+) {
+    operator fun invoke(): Flow<List<Recipe>> {
         return recipesRepository.getRecipes()
     }
 }

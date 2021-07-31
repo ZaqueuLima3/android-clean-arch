@@ -10,13 +10,40 @@
         android:id="@+id/tvRecipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Recipes"
-        android:textSize="24dp"
+        android:padding="@dimen/layout_space"
+        android:text="@string/recipes_title"
+        android:textSize="@dimen/layout_font_bigger"
         android:textStyle="bold"
-        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivEmpty"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/image_empty_height"
+        android:layout_marginStart="@dimen/layout_space"
+        android:layout_marginEnd="@dimen/layout_space"
+        android:src="@drawable/img_no_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmpty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecipes"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_half_space"
+        android:text="@string/we_did_not_find_any_recipes"
+        android:textSize="@dimen/layout_font_big"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivEmpty"
+        app:layout_constraintStart_toStartOf="@+id/ivEmpty"
+        app:layout_constraintTop_toBottomOf="@+id/ivEmpty" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_container"

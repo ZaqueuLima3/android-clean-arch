@@ -5,19 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/layout_half_padding"
-    app:cardElevation="@dimen/layout_half_padding"
-    app:cardUseCompatPadding="true">
+    app:cardCornerRadius="@dimen/layout_half_space"
+    app:cardElevation="@dimen/layout_half_space"
+    app:cardUseCompatPadding="true"
+    android:background="?attr/colorOnPrimary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorOnPrimary">
+        android:layout_height="wrap_content" >
 
         <ImageView
             android:id="@+id/ivRecipe"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="@dimen/image_recipe_height"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,38 +28,38 @@
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/layout_space"
+            android:layout_marginTop="@dimen/layout_half_space"
+            android:layout_marginEnd="@dimen/layout_space"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="TextView"
-            android:textSize="20dp"
+            android:textSize="@dimen/layout_font_big"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivRecipe" />
+            app:layout_constraintTop_toBottomOf="@+id/ivRecipe"
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/layout_space"
+            android:layout_marginTop="@dimen/layout_half_space"
+            android:layout_marginEnd="@dimen/layout_font_small"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," />
 
         <ImageView
             android:id="@+id/ivLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="36dp"
+            android:layout_marginTop="@dimen/layout_half_space"
+            android:layout_marginBottom="@dimen/layout_double_space"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvDescription"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription"
@@ -71,13 +71,13 @@
             android:id="@+id/tvLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="1"
+            android:layout_marginTop="@dimen/layout_small_space"
             android:textAlignment="center"
             android:textColor="@color/blue_400"
             app:layout_constraintEnd_toEndOf="@+id/ivLike"
             app:layout_constraintStart_toStartOf="@+id/ivLike"
-            app:layout_constraintTop_toBottomOf="@+id/ivLike" />
+            app:layout_constraintTop_toBottomOf="@+id/ivLike"
+            tools:text="1" />
 
         <ImageView
             android:id="@+id/ivClock"
@@ -93,13 +93,13 @@
             android:id="@+id/tvClock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="1"
+            android:layout_marginTop="@dimen/layout_small_space"
             android:textAlignment="center"
             android:textColor="@color/blue_400"
             app:layout_constraintEnd_toEndOf="@+id/ivClock"
             app:layout_constraintStart_toStartOf="@+id/ivClock"
-            app:layout_constraintTop_toBottomOf="@+id/ivClock" />
+            app:layout_constraintTop_toBottomOf="@+id/ivClock"
+            tools:text="1" />
 
         <ImageView
             android:id="@+id/ivVegan"
@@ -113,12 +113,12 @@
             android:id="@+id/tvVegan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="1"
+            android:layout_marginTop="@dimen/layout_small_space"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/ivVegan"
             app:layout_constraintStart_toStartOf="@+id/ivVegan"
-            app:layout_constraintTop_toBottomOf="@+id/ivVegan" />
+            app:layout_constraintTop_toBottomOf="@+id/ivVegan"
+            tools:text="1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="layout_half_padding">8dp</dimen>
+    <dimen name="layout_small_space">4dp</dimen>
+    <dimen name="layout_half_space">8dp</dimen>
+    <dimen name="layout_space">16dp</dimen>
+    <dimen name="layout_double_space">36dp</dimen>
+    <dimen name="layout_max_space">64dp</dimen>
+
+    <dimen name="layout_font_small">12sp</dimen>
+    <dimen name="layout_font_big">16sp</dimen>
+    <dimen name="layout_font_bigger">24sp</dimen>
+
+    <dimen name="image_empty_height">260dp</dimen>
+    <dimen name="image_recipe_height">160dp</dimen>
 </resources>

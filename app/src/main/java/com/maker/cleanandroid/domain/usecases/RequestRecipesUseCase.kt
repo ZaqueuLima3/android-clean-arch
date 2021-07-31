@@ -1,15 +1,17 @@
 package com.maker.cleanandroid.domain.usecases
 
 import com.maker.cleanandroid.domain.protocols.RecipesRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 
 class RequestRecipesUseCase(
     private val recipesRepository: RecipesRepository
-) : UseCase.NoSource<Map<String, String>>() {
-    override suspend fun execute(param: Map<String, String>): Flow<Unit> {
-        val (recipes) = recipesRepository.requestRecipes(param)
-        recipesRepository.storeRecipes(recipes)
-        return flow {  }
+) {
+    suspend operator fun invoke(param: Map<String, String>) {
+        recipesRepository.requestRecipes(param)
+            .catch {  }
+            .collect { (recipes) ->
+                recipesRepository.storeRecipes(recipes)
+            }
     }
 }

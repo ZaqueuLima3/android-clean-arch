@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Clean Android</string>
+    <string name="we_did_not_find_any_recipes">We didn\'t find any recipes</string>
+    <string name="recipes_title">Recipes</string>
+    <string name="try_again">Try again later</string>
 </resources>

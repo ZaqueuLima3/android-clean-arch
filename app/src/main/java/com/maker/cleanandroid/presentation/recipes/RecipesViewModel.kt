@@ -43,9 +43,11 @@ class RecipesViewModel(
                 }
                 .collect { recipes ->
                     if (recipes.isEmpty()) {
+                        _viewState.postValue(ViewState.Empty)
                         requestRecipes()
+                    } else {
+                        _viewState.postValue(ViewState.Success(recipes))
                     }
-                    _viewState.postValue(ViewState.Success(recipes))
                 }
         }
     }
@@ -69,6 +71,7 @@ class RecipesViewModel(
 
     sealed class ViewState {
         object Loading : ViewState()
+        object Empty : ViewState()
         data class Success(val recipes: List<Recipe>) : ViewState()
         data class Error(val error: Throwable) : ViewState()
     }
