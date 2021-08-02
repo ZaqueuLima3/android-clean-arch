@@ -1,4 +1,4 @@
-package com.maker.cleanandroid.domain.di
+package com.maker.cleanandroid.main.di.domain
 
 import com.maker.cleanandroid.domain.usecases.GetRecipesUseCase
 import com.maker.cleanandroid.domain.usecases.RequestRecipesUseCase

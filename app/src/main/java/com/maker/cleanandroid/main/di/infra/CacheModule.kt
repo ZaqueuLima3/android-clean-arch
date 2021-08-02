@@ -1,4 +1,4 @@
-package com.maker.cleanandroid.infra.di
+package com.maker.cleanandroid.main.di.infra
 
 import com.maker.cleanandroid.data.protocols.CacheServices
 import com.maker.cleanandroid.infra.cache.room.RoomCache

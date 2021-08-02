@@ -1,4 +1,4 @@
-package com.maker.cleanandroid.presentation.di
+package com.maker.cleanandroid.main.di.presentation
 
 import com.maker.cleanandroid.presentation.recipes.RecipesAdapter
 import com.maker.cleanandroid.presentation.recipes.RecipesFragment

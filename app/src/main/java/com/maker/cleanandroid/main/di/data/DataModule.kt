@@ -1,4 +1,4 @@
-package com.maker.cleanandroid.data.di
+package com.maker.cleanandroid.main.di.data
 
 import com.maker.cleanandroid.data.repositories.SpoonacularRecipesRepository
 import com.maker.cleanandroid.domain.protocols.RecipesRepository

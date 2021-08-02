@@ -47,12 +47,14 @@ class RecipesFragment(
 
     private fun updateScreenState(viewState: RecipesViewModel.ViewState) {
         when (viewState) {
-            is RecipesViewModel.ViewState.Loading -> {
-            }
+            is RecipesViewModel.ViewState.Loading -> onLoading()
             is RecipesViewModel.ViewState.Empty -> onEmpty()
             is RecipesViewModel.ViewState.Error -> onError()
             is RecipesViewModel.ViewState.Success -> onSuccess(viewState.recipes)
         }
+    }
+
+    private fun onLoading() {
     }
 
     private fun onSuccess(recipes: List<Recipe>) {

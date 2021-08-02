@@ -1,4 +1,4 @@
-package com.maker.cleanandroid.infra.di
+package com.maker.cleanandroid.main.di.infra
 
 import org.koin.core.context.loadKoinModules
 
