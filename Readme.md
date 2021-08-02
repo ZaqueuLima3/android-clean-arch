@@ -4,15 +4,13 @@
 
 ## Architecture
 
----
-
 In this sample, I tried to follow the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) principles with low coupling.
 
 The main idea is that the application does not depend on any external library, and the layers don't depend on each other.
 
 This application is divided into five main layers.
 
-![image](https://user-images.githubusercontent.com/31195408/127798523-f08ea66d-ee08-4efa-9bff-e9a2ef1538e9.png)
+<img src="https://user-images.githubusercontent.com/31195408/127798523-f08ea66d-ee08-4efa-9bff-e9a2ef1538e9.png" width="300">
 
 - **Main:** The **main** layer is the only one that knows all of the others, this is the one responsible for the dependencies injection declarations (with Koin in my case), for the FragmentFactory, MainActivity (once the app is based on a single activity, the only one goes into the main layer, otherwise, you can put the activities in the presentation layer), and the Application.
 - **Presentation:** The **presentation** layer knows itself and the domain layer, this is the one responsible for the UI related classes like Fragments, Adapters, ViewHolder, and ViewModels.
@@ -26,15 +24,11 @@ The feature architecture diagram:
 
 ## App Screenshots
 
----
-
 ### List of Recipes
 
-![image](https://user-images.githubusercontent.com/31195408/127798599-5320fd16-96c8-48bc-b054-2e4ce46df7d4.png)
+<img src="https://user-images.githubusercontent.com/31195408/127798599-5320fd16-96c8-48bc-b054-2e4ce46df7d4.png" width="400">
 
 ## Libraries
-
----
 
 - Appcompat
 - ConstraintLayout
@@ -48,7 +42,5 @@ The feature architecture diagram:
 - Picasso (I'm using Glide and Picasso for illustrative purposes only, to show the convenience of switching a library when using adapters)
 
 ## Contribute
-
----
 
 This project is just a demo, few free to clone or fork the project and send your feedback, pull requests...
