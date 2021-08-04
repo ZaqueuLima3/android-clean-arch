@@ -26,7 +26,8 @@ The architecture diagram:
 
 ### List of Recipes
 
-<img src="https://user-images.githubusercontent.com/31195408/127798599-5320fd16-96c8-48bc-b054-2e4ce46df7d4.png" width="400">
+<img src="https://user-images.githubusercontent.com/31195408/128102103-8405bc36-1747-44b7-affa-d673592532b4.png" width="400">
+
 
 ## Libraries
 
