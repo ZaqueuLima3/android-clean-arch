@@ -8,7 +8,7 @@ In this sample, I tried to follow the [Clean Architecture](https://blog.cleancod
 
 The main idea is that the application does not depend on any external library, and the layers don't depend on each other.
 
-This application is divided into five main layers.
+This application is divided into five layers.
 
 <img src="https://user-images.githubusercontent.com/31195408/127798523-f08ea66d-ee08-4efa-9bff-e9a2ef1538e9.png" width="300">
 
@@ -18,7 +18,7 @@ This application is divided into five main layers.
 - **Data:** The **data** layer knows itself and the domain layer, this is the one responsible for implements the domain repositories contracts, declare contracts for external libraries adapters like a **retrofit** service, and handle the app data.
 - **Infra:** The **infra** layer is the one that knows the external libraries that you are using, this is the one responsible for implements your external libraries adapters.
 
-The feature architecture diagram:
+The architecture diagram:
 
 ![image](https://user-images.githubusercontent.com/31195408/127798568-839d0496-3a3a-4ed3-b873-1e7ff9028223.png)
 
