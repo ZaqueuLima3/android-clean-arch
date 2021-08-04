@@ -1,4 +1,4 @@
-package com.maker.cleanandroid.presentation.recipes
+package com.maker.cleanandroid.presentation.recipes.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,10 +11,10 @@ import com.maker.cleanandroid.presentation.protocols.ImageLoader
 
 class RecipesAdapter(
     private val imageLoader: ImageLoader
-) : ListAdapter<Recipe, RecipesAdapter.ViewHolder>(DiffCallback()) {
+) : ListAdapter<Recipe, RecipesAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflate = LayoutInflater.from(parent.context)
-        val binding = ItemRecipeBinding.inflate(inflate,parent, false)
+        val binding = ItemRecipeBinding.inflate(inflate, parent, false)
         return ViewHolder(binding)
     }
 
@@ -37,7 +37,7 @@ class RecipesAdapter(
     }
 }
 
-class DiffCallback : DiffUtil.ItemCallback<Recipe>() {
+private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Recipe>() {
     override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe) = oldItem == newItem
     override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe) = oldItem.id == newItem.id
 }

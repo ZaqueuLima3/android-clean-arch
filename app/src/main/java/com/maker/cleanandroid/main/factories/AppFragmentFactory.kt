@@ -2,9 +2,6 @@ package com.maker.cleanandroid.main.factories
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.maker.cleanandroid.presentation.recipes.RecipesAdapter
-import com.maker.cleanandroid.presentation.recipes.RecipesFragment
-import com.maker.cleanandroid.presentation.recipes.RecipesViewModel
 import org.koin.java.KoinJavaComponent.getKoin
 
 class AppFragmentFactory : FragmentFactory() {

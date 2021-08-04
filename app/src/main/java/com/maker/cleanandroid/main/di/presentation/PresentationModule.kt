@@ -1,6 +1,7 @@
 package com.maker.cleanandroid.main.di.presentation
 
-import com.maker.cleanandroid.presentation.recipes.RecipesAdapter
+import com.maker.cleanandroid.presentation.recipes.adapters.RecipesAdapter
+import com.maker.cleanandroid.presentation.recipes.adapters.RecipesFilterAdapter
 import com.maker.cleanandroid.presentation.recipes.RecipesFragment
 import com.maker.cleanandroid.presentation.recipes.RecipesViewModel
 import org.koin.androidx.fragment.dsl.fragment
@@ -30,7 +31,8 @@ object PresentationModule {
             fragment {
                 RecipesFragment(
                     viewModel = get(),
-                    recipesAdapter = get()
+                    recipesAdapter = get(),
+                    recipesFilterAdapter = get()
                 )
             }
         }
@@ -42,6 +44,9 @@ object PresentationModule {
                 RecipesAdapter(
                     imageLoader = get()
                 )
+            }
+            single {
+                RecipesFilterAdapter()
             }
         }
     }

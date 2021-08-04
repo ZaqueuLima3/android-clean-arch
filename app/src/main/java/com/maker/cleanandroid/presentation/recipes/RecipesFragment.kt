@@ -2,16 +2,22 @@ package com.maker.cleanandroid.presentation.recipes
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.maker.cleanandroid.R
 import com.maker.cleanandroid.databinding.FragmentRecipesBinding
 import com.maker.cleanandroid.domain.model.Recipe
 import com.maker.cleanandroid.presentation.BindingFragment
+import com.maker.cleanandroid.presentation.recipes.adapters.RecipesAdapter
+import com.maker.cleanandroid.presentation.recipes.adapters.RecipesFilterAdapter
+import com.maker.cleanandroid.presentation.shared.GridLayoutAdapterWrapper
+import com.maker.cleanandroid.presentation.shared.HorizontalLayoutAdapterWrapper
 
 class RecipesFragment(
     private val viewModel: RecipesViewModel,
-    private val recipesAdapter: RecipesAdapter
+    private val recipesAdapter: RecipesAdapter,
+    private val recipesFilterAdapter: RecipesFilterAdapter
 ) : BindingFragment<FragmentRecipesBinding>(FragmentRecipesBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,8 +33,11 @@ class RecipesFragment(
 
     private fun setupRecyclerView() {
         binding.rvRecipesList.apply {
-            adapter = recipesAdapter
-            layoutManager = GridLayoutManager(requireContext(), ITEMS_PER_ROW)
+            adapter = ConcatAdapter(
+                HorizontalLayoutAdapterWrapper(recipesFilterAdapter),
+                GridLayoutAdapterWrapper(recipesAdapter, ITEMS_PER_ROW)
+            )
+            layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
     }
@@ -59,6 +68,11 @@ class RecipesFragment(
 
     private fun onSuccess(recipes: List<Recipe>) {
         recipesAdapter.submitList(recipes)
+        recipesFilterAdapter.submitList(
+            listOf(
+                "omnivore", "vegetarian", "vegan", "fruitarian", "pescetarian",
+            )
+        )
         binding.ivEmpty.visibility = View.INVISIBLE
         binding.tvEmpty.visibility = View.INVISIBLE
     }
